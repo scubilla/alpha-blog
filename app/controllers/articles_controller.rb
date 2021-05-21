@@ -9,14 +9,21 @@ class ArticlesController < ApplicationController
         @articles = Article.all
     end
 
+    # crear variable de instancia para manejador de error,viene de render new
     def new
+        @article  = Article.new 
     end
 
     def create
         #@article =Article.new(params[:article])(
         @article =Article.new(params.require(:article).permit(:title, :description))
-        @article.save
-        redirect_to @article  # de aqui toma el id y lo muestra
+        #validar si graba y poner mensajes
+        if @article.save
+           flash[:notice] = "Articulo creado satisfactoriamente."
+           redirect_to @article  # de aqui toma el id y lo muestra
+        else 
+            render 'new'   
+        end    
     end
 
 end
