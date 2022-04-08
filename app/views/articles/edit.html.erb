@@ -1,4 +1,4 @@
-<h1>Crear Nuevo Articulo</h1>
+<h1>Editar Articulo</h1>
 
 <% if @article.errors.any? %>
     <h2>Los siguientes mensajes impidieron que se guardara el artículo</h2>
@@ -9,7 +9,7 @@
     </ul>
  <% end %>    
 
-<%= form_with scope: :article, url: articles_path, local: true do |f| %>
+<%= form_with(model: @article, local: true) do |f| %>
 
     <p>
         <%= f.label :title %></br>
@@ -27,4 +27,4 @@
 
 <% end %>    
 
-<%= link_to 'Ir a Listado', articles_path %>
+<%= link_to 'Cancelar e ir a Listado', articles_path %>
