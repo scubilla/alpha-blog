@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+
+    before_action :set_article, only: [:show, :edit, :update, :destroy]
+
+
     def show
        #byebug 
         # variable de instacia con arroba
@@ -20,7 +24,7 @@ class ArticlesController < ApplicationController
 
     def create
         #@article =Article.new(params[:article])(
-        @article =Article.new(params.require(:article).permit(:title, :description))
+        @article =Article.new(article_params)
         #validar si graba y poner mensajes
         if @article.save
            flash[:notice] = "Articulo creado satisfactoriamente."
@@ -32,7 +36,7 @@ class ArticlesController < ApplicationController
 
     def update
         @article = Article.find(params[:id])
-        if @article.update(params.require(:article).permit(:title, :description))
+        if @article.update(article_params)
             flash[:notice] = "Articulo actualizado con exito."
             redirect_to @article
         else
@@ -46,6 +50,15 @@ class ArticlesController < ApplicationController
         redirect_to articles_path
     end
 
+    private
+    
+    def set_article
+        @article = Article.find(params[:id]) 
+    end    
+
+    def article_params
+        params.require(:article).permit(:title, :description)
+    end
 
 end
 
