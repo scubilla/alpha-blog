@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
     def show
        #byebug 
         # variable de instacia con arroba
-        @article = Article.find(params[:id])
+#        @article = Article.find(params[:id])
     end
     
     def index
@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
     end
 
     def edit
-        @article = Article.find(params[:id])  # traido de show
+ #       @article = Article.find(params[:id])  # traido de show
     end
 
     def create
@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
     end
 
     def update
-        @article = Article.find(params[:id])
+  #      @article = Article.find(params[:id])
         if @article.update(article_params)
             flash[:notice] = "Articulo actualizado con exito."
             redirect_to @article
@@ -45,7 +45,7 @@ class ArticlesController < ApplicationController
     end
 
     def destroy
-        @article = Article.find(params[:id]) 
+   #     @article = Article.find(params[:id]) 
         @article.destroy
         redirect_to articles_path
     end

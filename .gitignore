@@ -23,6 +23,9 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
+Gemfile
+.ruby-version
+
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
