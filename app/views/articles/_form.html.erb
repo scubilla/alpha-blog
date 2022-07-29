@@ -1,13 +1,6 @@
 <div class="container">
 
-    <% if @article.errors.any? %>
-      <h2>Los siguientes mensajes impidieron que se guardara el artículo</h2>
-      <ul>
-        <% @article.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end%>
-      </ul>
-    <% end %>    
+   <%= render 'shared/errors' %>  
 
     <div class="row justify-content-center">
       <div class="col-10">
